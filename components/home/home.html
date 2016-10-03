@@ -1,0 +1,26 @@
+<div class="container-fluid">
+	<div class="row">
+		<list style="border-left-color:{{vm.colorHash.hex(item.name)}}" class="col-md-4 offset-left-10" ng-repeat="item in vm.dataSource.lists" items="item.cards">
+		</list>
+		<div class="col-md-4 offset-left-10">
+			<button class="btn btn-primary" ng-click="vm.openAddList()"><i class="fa fa-plus"></i> Add List</button>
+		</div>
+	</div>
+</div>
+<script type="text/ng-template" id="addList.html">
+        <div class="modal-header">
+            <h3 class="modal-title">Add List</h3>
+        </div>
+        <div class="modal-body" id="modal-body">
+            <form name="listform" novalidate>
+				<div class="form-group">
+					<label>Name</label>
+					<input class="form-control" name="listName" type="text" ng-model="vm.listName" required/>
+				</div>
+			</form>
+        </div>
+        <div class="modal-footer">
+            <button class="btn btn-primary" type="button" ng-click="vm.addListToData()" ng-disabled="listform.$invalid">Add</button>
+            <button class="btn btn-warning" type="button" ng-click="vm.cancel()">Cancel</button>
+        </div>
+    </script>

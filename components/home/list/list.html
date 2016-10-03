@@ -1,0 +1,36 @@
+<div class="container-fluid">
+	<div class="row">
+		<card class="col-xs-12" ng-repeat="card in vm.items">
+		</card>
+		<div class="col-xs-12">
+			<button class="btn btn-primary offset-bottom-20" ng-click="vm.openAddCard()"><i class="fa fa-plus"></i> Add Card</button>
+		</div>
+	</div>
+</div>
+<script type="text/ng-template" id="addCard.html">
+        <div class="modal-header">
+            <h3 class="modal-title">Add Card</h3>
+        </div>
+        <div class="modal-body" id="modal-body">
+            <form name="cardform" novalidate>
+				<div class="form-group">
+					<label>Title</label>
+					<input class="form-control" name="cardTitle" type="text" ng-model="vm.card.title" required/>
+				</div>
+				<div class="form-group">
+					<label>Description</label>
+					<input class="form-control" name="cardDesc" type="text" ng-model="vm.card.description" required/>
+				</div>
+				<div class="form-group">
+					<label>Comments</label>
+					<div ng-repeat="comment in vm.card.comments">{{comment}}</div>
+					<input class="form-control" name="comments" type="text" ng-model="vm.comment"/>
+					<button class="btn btn-primary" type="button" ng-click="vm.addComment()" ng-disabled="!vm.comment">Add</button>
+				</div>
+			</form>
+        </div>
+        <div class="modal-footer">
+            <button class="btn btn-primary" type="button" ng-click="vm.addListToData()" ng-disabled="cardform.$invalid">Add</button>
+            <button class="btn btn-warning" type="button" ng-click="vm.cancel()">Cancel</button>
+        </div>
+    </script>
